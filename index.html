@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Clouder</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <nav id="navbar">
+            <div class="headline">WordInspo</div>
+            <div class="nav-links">
+                <a href="#search">Search</a>
+                <a href="#word-cloud">Word Cloud</a>
+            </div>   
+        </nav>
+        <main class="container">
+            <section>
+                <a id="search"> </a>
+                <form id="js-form">
+                <fieldset class="parameters">
+                    <legend>Search</legend>
+                    <label for="js-query">What keyword do you want to search for?</label>
+                    <input type="text" id="js-query" placeholder="sad" required>
+                
+                    <label for="js-amount">Amount</label>
+                    <input type="number" id="js-amount" placeholder="15" max="100" required>
+
+                    <label for="js-type">Result Type</label>
+                    <input class="js-type" type="radio"  required>mixed<br />
+                    <input class="js-type" type="radio"  required>recent<br />
+                    <input class="js-type" type="radio"  required>popular<br />
+                    <button type="submit" id="submit">Search</button>
+                </fieldset>
+                </form>
+            </section>
+            <section>
+                <h1>How to use Clouder</h1>
+            </section>
+            <section>
+                <a id="js-cloud"> </a>
+                <h2>Word Cloud:</h2>
+            </section>  
+            <section>
+                <a id="list"> </a>
+                <h2>List</h2>
+                <ul id="js-results"></ul>
+            </section>   
+        </main>
+        <footer>Created by Lauren Maaser <p>Github: <a href="https://github.com/Lmcmaaser" target="_blank"> Lmcmaaser</a></p></footer> 
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
