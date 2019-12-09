@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: grey;
+}
+  
+button, input[type="text"] {
+    padding: 5px;
+}
+  
+button:hover {
+    cursor: pointer;
+}
+
+#navbar {
+    position: fixed;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 20px 10px;
+    transition: 0.4s;
+    background-color: lightgrey; 
+}
+
+nav a {
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.headline {
+    text-align: left;
+    position: absolute;
+}
+
+.nav-links {
+    text-align: right;
+    position: relative;
+}
+  
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 85px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 6% 0;
+    background-color: white;
+}
+
+section {
+    position: relative;
+    border: solid;
+    border-color: white;
+    padding: 10px;
+    background-color: white;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#js-cloud {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#instructions, #search, #word-cloud, #definition {
+    position: absolute;
+    top: -50px;
+}
+
+footer {
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 1% 0;
+    background-color: white;
+}
+
