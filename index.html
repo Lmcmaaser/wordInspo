@@ -33,15 +33,15 @@
                     <label for="js-keyword">What keyword do you want to search for?</label>
                     <input type="text" id="js-keyword" placeholder="sad" required>
 
-                    <label for="js-speech">Parts of Speech</label>
+                    <!--<label for="js-speech">Parts of Speech</label>
                     <input class="js-speech" type="radio"  required>noun<br />
                     <input class="js-speech" type="radio"  required>verb<br />
                     <input class="js-speech" type="radio"  required>adjective<br />
-                    <input class="js-speech" type="radio"  required>adverb<br />
+                    <input class="js-speech" type="radio"  required>adverb<br />-->
 
                     <label for="js-type">Result Type</label>
-                    <input class="js-type" type="radio"  required>Synonyms<br />
-                    <input class="js-type" type="radio"  required>Antonyms<br />
+                    <input class="js-type" type="radio"  value="syns" required>Synonyms<br />
+                    <input class="js-type" type="radio"  value="syns" required>Antonyms<br />
                     <button type="submit" id="submit">Search</button>
                 </fieldset>
                 </form>
@@ -49,17 +49,20 @@
             <section id="js-cloud">
                 <a id="word-cloud"> </a>
                 <h2>Word Cloud:</h2>
-                <div> </div>
+                <div id="chartdiv"></div>
             </section> 
             <section id="js-definition" >
                 <a id="definition"> </a>
                 <h2>Definition</h2>
             </section> 
         </main>
-        <footer>Created by Lauren Maaser <p>Github: <a href="https://github.com/Lmcmaaser" target="_blank"> Lmcmaaser</a></p></footer> 
+        <footer>Created by Lauren Maaser <p>Github: <a href="https://github.com/Lmcmaaser" target="_blank"> Lmcmaaser</a></p>
+            <p>Word Cloud Plugin: <a href="https://https://www.amcharts.com/download/" target="_blank"> amCharts 4</a></p>
+        </footer> 
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="script.js"></script>
-        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
-        <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+        <script src="core.js"></script>
+        <script src="charts.js"></script>
+        <script src="plugins/wordCloud.js"></script>
     </body>
 </html>

@@ -23,7 +23,7 @@ function eventSubmit() {
     console.log('submitEvent ran');
     const keyWord = $('#js-keyword').val();
     //const speech = $('input:checked').val();
-    //const type = $('input:checked').val();
+    const type = $('input:checked').val();
     getWords(keyWord);
   });
 };
@@ -36,6 +36,7 @@ function formatQueryParams(params) {
 
 function getWords(keyWord) {
   //const query = formatQueryParams(search)
+  console.log('getWords ran');
   const url = baseUrl + keyWord + '?' +'key=' + apiKey
   console.log(keyWord);
   console.log(url);
@@ -47,15 +48,16 @@ function getWords(keyWord) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayDefinition(responseJson, keyWord)) //, anychart(responseJson)) 
+    .then(responseJson => displayResults(responseJson, keyWord))
     //.then(responseJson => console.log(responseJson))
     .catch(err => {
       $('#js-definition').text(`Something went wrong: ${err.message}`);
   });
-}
+};
 
 //display definition
-function displayDefinition(responseJson, keyWord) {
+function displayResults(responseJson, keyWord, type) {
+  console.log('displayResults ran');
   console.log(keyWord);
   console.log(responseJson);
   console.log(responseJson.length)
@@ -66,41 +68,66 @@ function displayDefinition(responseJson, keyWord) {
         `<a id="definition"> </a>
           <h2>Definition:</h2>
           <p>${responseJson[i].meta.id}</p>
-          <p>${responseJson[i].shortdef}</p>`
-      );
-    }
-    
+          <p>${responseJson[i].shortdef}</p>` //<p>${responseJson[i].meta.syns}</p>
+      )
+      if (type == "syns") {
+        $('#js-cloud').empty();
+        $('#js-cloud').append(
+          `<a id="word-cloud"> </a>
+          <h2>Word Cloud:</h2>
+          <div id="chartdiv"></div>`
+        );
+        am4core(responseJson[i].meta.syns);
+      } else if (type == "ants") {
+          $('#js-cloud').empty();
+          $('#js-cloud').append(
+            `<a id="word-cloud"> </a>
+            <h2>Word Cloud:</h2>
+            <div id="chartdiv"></div>`
+          );
+          am4core(responseJson[i].meta.ants);
+      };
+    };
   $('#js-keyword').val('');
   $('#input:checked').val('');
 };
 
+//create wordcloud
+
+function am4core (input) {
+  console.log('am4core ran');
+  var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
+  var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+  let arr = []; //create an arry to hold the input
+  for (let i = 0; i < input.length; i++)
+    arr.push(input[i]);
+  console.log(arr);
+
+  //turn array into a list of objects
+  let obj = arr.map((arr, index) => {
+    return {
+     tag: arr,
+     weight: index + 1,
+    }
+  });
+
+  console.log(obj)
+  series.data = obj;
+
+  series.dataFields.word = "tag";
+  series.dataFields.value = "weight"; 
+  series.colors = new am4core.ColorSet();
+  series.colors.passOptions = {};
+};
+
 $(eventSubmit);
 
-//create word cloud
-function anychart(responseJson) {
-  let data = [
-    //example data{"x": "word", "value": 0, category: "synonym"}
-  ];
-  let chart = anychart.tagCloud(data);
-  $('#js-definition').empty();
-  for (let i = 0; i < allOptions.options.length; i++) {
-    $('.insert-option').append(
-      `<section id="js-cloud">
-        <a id="word-cloud"> </a>
-        <h2>Word Cloud:</h2>
-        
-      </section>`)};
+/*const feelings =  ["content", "contented", "gratified", "pleased", "satisfied"] 
 
-// set a chart title
-chart.title('15 most spoken languages')
-// set an array of angles at which the words will be laid out
-chart.angles([0])
-// enable a color range
-chart.colorRange(true);
-// set the color range length
-chart.colorRange().length('80%');
-
-// display the word cloud chart
-chart.container("container");
-chart.draw();
-};
+const things = feelings.map((feeling, index) => {
+  return {
+   tag: feeling,
+   index: index + 1,
+  }
+});*/

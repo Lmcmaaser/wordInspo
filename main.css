@@ -4,7 +4,7 @@
   
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: grey;
+    background-color: teal;
 }
   
 button, input[type="text"] {
@@ -24,7 +24,7 @@ button:hover {
     z-index: 10;
     padding: 20px 10px;
     transition: 0.4s;
-    background-color: lightgrey; 
+    background-color: white; 
 }
 
 nav a {
@@ -48,6 +48,7 @@ nav a {
 }
 
 header {
+    text-align: center;
     margin-top: 85px;
     margin-right: 20px;
     margin-left: 20px;
@@ -58,7 +59,7 @@ header {
 section {
     position: relative;
     border: solid;
-    border-color: white;
+    border-color: darkgreen;
     padding: 10px;
     background-color: white;
     margin-top: 15px;
@@ -80,9 +81,7 @@ section {
 
 footer {
     margin-top: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 1% 0;
+    padding: 10px;
     background-color: white;
 }
 
