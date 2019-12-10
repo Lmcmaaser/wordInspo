@@ -61,12 +61,12 @@ function displayDefinition(responseJson, keyWord) {
   console.log(responseJson.length)
   $('#js-definition').empty();
   for (let i = 0; i < responseJson.length; i++)
-    if (keyWord === responseJson.meta.id) {
+    if (keyWord === responseJson[i].meta.id) {
       $('#js-definition').append(
         `<a id="definition"> </a>
           <h2>Definition:</h2>
-          <p>${responseJson.hwi.hw}</p>
-          <p>${responseJson.shortdef}</p>`
+          <p>${responseJson[i].meta.id}</p>
+          <p>${responseJson[i].shortdef}</p>`
       );
     }
     
