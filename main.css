@@ -4,7 +4,7 @@
   
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: teal;
+    background-color:grey;
 }
   
 button, input[type="text"] {
@@ -59,7 +59,7 @@ header {
 section {
     position: relative;
     border: solid;
-    border-color: darkgreen;
+    border-color: darkgrey;
     padding: 10px;
     background-color: white;
     margin-top: 15px;
