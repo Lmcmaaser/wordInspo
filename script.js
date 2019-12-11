@@ -60,10 +60,9 @@ function displayResults(responseJson, keyWord, type) { //function displayResults
   console.log(responseJson);
   console.log(responseJson.length)
   $('#js-results').empty();
-  $('#js-cloud').empty();
   for (let i = 0; i < responseJson.length; i++) {
     if (keyWord === responseJson[i].meta.id) { 
-      let option = responseJson[i]
+      let option = responseJson[i];
       $('#js-results').append(
         `<a id="word-cloud"> </a>
         <h2>Word Cloud:</h2>
@@ -73,56 +72,52 @@ function displayResults(responseJson, keyWord, type) { //function displayResults
         <p>${option.meta.id}</p>
         <p>${option.shortdef}</p>` //<p>${responseJson[i].meta.syns}</p>
       ) // works
-      synsData(option, type);
+      wordData(option, type);
     } 
   }
   $('#js-keyword').val('');
-  $('#input:checked').val('');
-};
-
-//set up word cloud data 
-function synsData(option, type) {
-  if (type == "syns") {
-    console.log('synsData ran');
-    let input = option.meta.syns;
-    console.log(input); //input is an array of arrays
-    for (let i = 0; i < input.length; i++) {
-      let concat = input[i].flat();
-      console.log(concat);
-      /*for (let i = 0; i < concat.length; i++) {
-        let concatAgain = concat[i].flat();
-        console.log(concatAgain)
-      }*/
-      am4core(concat);
-    }
-  } else if (type == "ants") {
-    console.log('antsData ran');
-    let input = option.meta.ants;
-    console.log(input); //input is an array of arrays
-    for (let i = 0; i < input.length; i++) {
-      let concat = input[i].flat();
-      console.log(concat);
-    }
-  }
+  $('#input:checked').attr('checked', false);
 };
 
 //create word cloud
-function am4core(concat) {
+function wordCloudGenerator(concat) {
   console.log('plugin ran');
-  
   let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
   let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
-  let data = [];
-  data.push(concat);
-  console.log(data);
   //add data
-  series.data =  //needs to consist of an array of objects
-
+  series.data = [];
+  for (let i = 0; i < concat.length; i++) {
+    series.data.push({
+      "tag": concat[i],
+      "weight": Math.random() * 100
+    });
+  };
   series.dataFields.word = "tag";
   series.dataFields.value = "weight"; 
   series.colors = new am4core.ColorSet();
   series.colors.passOptions = {};
 }; 
+
+//set up word cloud data 
+function wordData(option, type) {
+  if (type == "syns") {
+    console.log('synsData ran');
+    let input = option.meta.syns;
+    console.log(input); //input is an array of arrays
+    let concat = input.flat();
+    console.log(concat);
+    wordCloudGenerator(concat);
+  } else if (type == "ants") {
+    console.log('antsData ran');
+    let input = option.meta.ants;
+    console.log(input); //input is an array of arrays
+    let concat = input.flat();
+    console.log(concat);
+    wordCloudGenerator(concat);
+  }
+};
+
+
 $(eventSubmit);
 
 
