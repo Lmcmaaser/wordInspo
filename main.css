@@ -67,16 +67,14 @@ section {
     margin-left: 20px;
 }
 
-#js-cloud {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 #instructions, #search, #word-cloud, #definition {
     position: absolute;
     top: -50px;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 350px;
 }
 
 footer {

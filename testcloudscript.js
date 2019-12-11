@@ -1,4 +1,4 @@
-function am4core () {
+function am4core() {
     //am4core.useTheme(am4themes_animated);
     // Create chart instance
     var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
