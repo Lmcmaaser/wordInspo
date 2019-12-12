@@ -60,21 +60,19 @@ function displayResults(responseJson, keyWord, type) { //function displayResults
   console.log(responseJson);
   console.log(responseJson.length)
   $('#js-results').empty();
-  for (let i = 0; i < responseJson.length; i++) {
-    if (keyWord === responseJson[i].meta.id) { 
+  let i = 0;
+    //if (keyWord === responseJson[i].meta.id) { 
       let option = responseJson[i];
       $('#js-results').append(
         `<a id="word-cloud"> </a>
         <h2>Word Cloud:</h2>
         <div id="chartdiv"></div>
         <a id="definition"> </a>
-        <h2>Definition</h2>
+        <h3>Definition:</h3>
         <p>${option.meta.id}</p>
         <p>${option.shortdef}</p>` //<p>${responseJson[i].meta.syns}</p>
-      ) // works
+      );
       wordData(option, type);
-    } 
-  }
   $('#js-keyword').val('');
   $('input[name="type"]').prop('checked', false);
 };
