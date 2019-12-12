@@ -76,7 +76,7 @@ function displayResults(responseJson, keyWord, type) { //function displayResults
     } 
   }
   $('#js-keyword').val('');
-  $('#input:checked').attr('checked', false);
+  $('input[name="type"]').prop('checked', false);
 };
 
 //create word cloud
