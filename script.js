@@ -25,19 +25,9 @@ function eventSubmit() {
   });
 };
 
-function formatQueryParams(params) {
-  const queryParams = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  return queryParams.join('&');
-};
-
 function getWords(keyWord, type) {
-  //const query = formatQueryParams(search)
   console.log('getWords ran');
   const url = baseUrl + keyWord + '?' +'key=' + apiKey
-  console.log(keyWord);
-  console.log(url);
-  console.log(type);
   
   fetch(url)
     .then(response => {
@@ -47,39 +37,38 @@ function getWords(keyWord, type) {
       throw new Error(response.statusText);
     })
     .then(responseJson => displayResults(responseJson, keyWord, type))
-    //.then(responseJson => console.log(responseJson))
     .catch(err => {
-      $('#js-results').text(`Something went wrong: ${err.message}`);
+      $('#js-results').text(`Something went wrong: word not found.`); //${err.message}
   });
 };
 
 //display definition
-function displayResults(responseJson, keyWord, type) { //function displayResults(responseJson, keyWord, type)
+function displayResults(responseJson, keyword, type) { 
   console.log('displayResults ran');
-  console.log(type);
-  console.log(responseJson);
-  console.log(responseJson.length)
   $('#js-results').empty();
-  let i = 0;
-    //if (keyWord === responseJson[i].meta.id) { 
-      let option = responseJson[i];
-      $('#js-results').append(
-        `<a id="word-cloud"> </a>
-        <h2>Word Cloud:</h2>
-        <div id="chartdiv"></div>
-        <a id="definition"> </a>
-        <h3>Definition:</h3>
-        <p>${option.meta.id}</p>
-        <p>${option.shortdef}</p>` //<p>${responseJson[i].meta.syns}</p>
-      );
-      wordData(option, type);
+  let i = 0; 
+  let option = responseJson[i];
+  console.log(responseJson[i]);
+  $('#js-results').append(
+    `<a id="word-cloud"> </a>
+    <h2>Word Cloud:</h2>
+    <div id="chartdiv"></div>
+    <a id="definition"> </a>
+    <h3>Definition: ${option.meta.id}</h3>
+    <ol>
+      <li>${option.shortdef[0]}</li>
+      <li>${option.shortdef[1]}</li>
+      <li>${option.shortdef[2]}</li>
+    </ol>`
+  );
+  wordData(option, type);
   $('#js-keyword').val('');
   $('input[name="type"]').prop('checked', false);
 };
 
 //create word cloud
 function wordCloudGenerator(concat) {
-  console.log('plugin ran');
+  console.log('wordCloudGenerator plugin ran');
   let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
   let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
   //add data
@@ -99,62 +88,16 @@ function wordCloudGenerator(concat) {
 //set up word cloud data 
 function wordData(option, type) {
   if (type == "syns") {
-    console.log('synsData ran');
+    console.log('wordData syns ran');
     let input = option.meta.syns;
-    console.log(input); //input is an array of arrays
     let concat = input.flat();
-    console.log(concat);
     wordCloudGenerator(concat);
   } else if (type == "ants") {
-    console.log('antsData ran');
+    console.log('wordData ants ran');
     let input = option.meta.ants;
-    console.log(input); //input is an array of arrays
     let concat = input.flat();
-    console.log(concat);
     wordCloudGenerator(concat);
   }
 };
 
-
 $(eventSubmit);
-
-
-/*const feelings =  ["content", "contented", "gratified", "pleased", "satisfied"] 
-
-const things = feelings.map((feeling, index) => {
-  return {
-   tag: feeling,
-   index: index + 1,
-  }
-});
-
-ex. series.data = [
-        {
-            "tag": "Breaking News",
-            "weight": 60
-        }, {
-            "tag": "Environment",
-            "weight": 80
-        }, {
-            "tag": "Politics",
-            "weight": 90
-        }, {
-            "tag": "Business",
-            "weight": 25
-        }, {
-            "tag": "Lifestyle",
-            "weight": 30
-        }, {
-            "tag": "World",
-            "weight": 45
-        }, {
-            "tag": "Sports",
-            "weight": 160
-        }, {
-            "tag": "Fashion",
-            "weight": 20
-        }, {
-            "tag": "Education",
-            "weight": 78
-        }
-    ];*/

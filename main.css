@@ -4,7 +4,7 @@
   
 body {
     font-family: 'Roboto', sans-serif;
-    background-color:grey;
+    background-color: lightsteelblue;
 }
   
 button, input[type="text"] {
@@ -24,7 +24,7 @@ button:hover {
     z-index: 10;
     padding: 20px 10px;
     transition: 0.4s;
-    background-color: white; 
+    background-color: palevioletred; 
 }
 
 nav a {
@@ -32,14 +32,20 @@ nav a {
     padding-right: 5px;
 }
 
-.headline {
-    text-align: left;
-    position: absolute;
+.nav-links {
+    text-align: center;
+    /*position: relative;*/
 }
 
-.nav-links {
-    text-align: right;
-    position: relative;
+.headline {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#instructions, #search, #word-cloud, #definition {
+    position: absolute;
+    top: -50px;
 }
   
 .container {
@@ -50,36 +56,129 @@ nav a {
 header {
     text-align: center;
     margin-top: 85px;
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 6% 0;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 20px;
     background-color: white;
+    border: solid;
+    border-color: yellow;
+    border-radius: 5px;
 }
 
 section {
     position: relative;
-    border: solid;
-    border-color: darkgrey;
-    padding: 10px;
     background-color: white;
+    border: solid;
+    border-color: yellow;
+    border-radius: 5px;
+    padding: 10px;
     margin-top: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
-#instructions, #search, #word-cloud, #definition {
-    position: absolute;
-    top: -50px;
+h2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 5px;
 }
 
 #chartdiv {
     width: 100%;
     height: 350px;
+    border: solid;
+    border-color: palevioletred;
+    border-radius: 5px;
 }
 
 footer {
+    flex-direction: column;
+    justify-content: space-evenly;
     margin-top: 15px;
+    width: 100%;
     padding: 10px;
     background-color: white;
+    border: solid;
+    border-color: yellow; 
+    border-radius: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+    footer {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 15px;
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        border: solid;
+        border-color: yellow; 
+        border-radius: 5px;
+    }
+  }
+
+@media only screen and (min-width: 1000px) {
+    #navbar {
+        position: fixed;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 20px 10px;
+        transition: 0.4s;
+        background-color: palevioletred; 
+    }
+    
+    nav a {
+        font-size: 16px;
+        padding-right: 5px;
+    }
+    
+    .nav-links {
+        text-align: right;
+        position: relative;
+    }  
+    
+    .headline {
+        text-align: left;
+        position: absolute;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    footer {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 15px;
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        border: solid;
+        border-color: yellow; 
+        border-radius: 5px;
+    }
+    
 }
 
