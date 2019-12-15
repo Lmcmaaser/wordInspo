@@ -1,0 +1,13 @@
+wordInspo
+
+Live Demo: https://lmcmaaser.github.io/wordInspo/
+
+Description:
+  Webb app that uses Merriam-Webster's Collegiate® Thesaurus API. 
+  Users can search for a keyword and choose whether they would like to see the synonyms or antonyms of that word.
+  App produces a word cloud based on the users selections.
+  
+ Motivation:
+  Designed to help users improve their writing by offering alternative word choices in a visually engaging way.  
+
+Uses: html, css, javascript, jquery, and amCharts 4 word cloud plugin
