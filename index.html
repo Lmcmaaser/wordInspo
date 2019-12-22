@@ -22,35 +22,35 @@
             </header>
             <section>
                 <a id="instructions"> </a>
-                <h3>About WordInspo:</h3>
+                <h2>About WordInspo:</h2>
                 <p>WordInspo can help you improve your writing!</p>
                 <ol>
-                    <li>Enter a keyword.</pli>
+                    <li>Enter a keyword.</li>
                     <li>Select whether you would like to receive the synonyms or antonyms for that word.</li>
                     <li>Click "Search!"</li>
                     <li>WordInspo will access Merriam-Webster's Collegiate® Thesaurus API and display the keyword's definition and a synonym or antonym word cloud!</li>
                 </ol>
             </section>
             <section>
+                <h3>What would you like to search for?</h3>
                 <a id="search"> </a>
                 <form id="js-form">
                 <fieldset class="parameters">
                     <legend>Search</legend>
-                    <label for="js-keyword">What keyword do you want to search for? <span><input type="text" id="js-keyword" placeholder="sad" required></span></label>
-                    
+                    <label for="js-keyword">Enter keyword: <span><input type="text" id="js-keyword" placeholder="sad" required></span></label>
 
-                    <label for="js-type">Result Type:</label>
-                    <input class="js-type" type="radio"  name="type" value="syns" required>Synonyms<br />
-                    <input class="js-type" type="radio"  name="type" value="ants" required>Antonyms<br />
+                    <label>Result Type:</label>
+                    <input class="js-type" type="radio"  name="type" value="syns" required>Synonyms />
+                    <input class="js-type" type="radio"  name="type" value="ants" required>Antonyms />
                     <button type="submit" id="submit">Search</button>
                 </fieldset>
                 </form>
             </section> 
             <section id="js-results">
                 <a id="word-cloud"> </a>
-                <h2>Word Cloud</h2>
+                <h4>Word Cloud</h4>
                 <div id="chartdiv"></div>
-                <h4>Definition:</h4>
+                <h5>Definition:</h5>
             </section> 
         </main>
         <footer>
