@@ -18,7 +18,6 @@ const baseUrl = 'https://www.dictionaryapi.com/api/v3/references/thesaurus/json/
 function eventSubmit() {
   $('form').submit(event => {
     event.preventDefault();
-    console.log('submitEvent ran');
     const keyWord = $('#js-keyword').val();
     const type = $('input:checked').val();
     getWords(keyWord, type);
@@ -26,7 +25,6 @@ function eventSubmit() {
 };
 
 function getWords(keyWord, type) {
-  console.log('getWords ran');
   const url = baseUrl + keyWord + '?' +'key=' + apiKey
   
   fetch(url)
@@ -44,11 +42,9 @@ function getWords(keyWord, type) {
 
 //display definition
 function displayResults(responseJson, keyword, type) { 
-  console.log('displayResults ran');
   $('#js-results').empty();
   let i = 0; 
   let option = responseJson[i];
-  console.log(responseJson[i]);
   $('#js-results').append(
     `<a id="word-cloud"> </a>
     <h2>Word Cloud:</h2>
@@ -68,7 +64,6 @@ function displayResults(responseJson, keyword, type) {
 
 //create word cloud
 function wordCloudGenerator(concat) {
-  console.log('wordCloudGenerator plugin ran');
   let chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
   let series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
   //add data
@@ -88,12 +83,10 @@ function wordCloudGenerator(concat) {
 //set up word cloud data 
 function wordData(option, type) {
   if (type == "syns") {
-    console.log('wordData syns ran');
     let input = option.meta.syns;
     let concat = input.flat();
     wordCloudGenerator(concat);
   } else if (type == "ants") {
-    console.log('wordData ants ran');
     let input = option.meta.ants;
     let concat = input.flat();
     wordCloudGenerator(concat);
