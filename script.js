@@ -82,11 +82,11 @@ function wordCloudGenerator(concat) {
 
 //set up word cloud data 
 function wordData(option, type) {
-  if (type == "syns") {
+  if (type === "syns") {
     let input = option.meta.syns;
     let concat = input.flat();
     wordCloudGenerator(concat);
-  } else if (type == "ants") {
+  } else if (type === "ants") {
     let input = option.meta.ants;
     let concat = input.flat();
     wordCloudGenerator(concat);
