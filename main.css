@@ -8,7 +8,8 @@ body {
 }
   
 button, input[type="text"] {
-    padding: 5px;
+    padding: 10px;
+    font-size: 17px;
 }
   
 button:hover {
@@ -30,7 +31,7 @@ button:hover {
 
 nav a {
     font-size: 16px;
-    padding-right: 5px;
+    padding: 10px;
     color: black;
 }
 
@@ -47,6 +48,29 @@ nav a {
 #instructions, #search, #word-cloud, #definition {
     position: absolute;
     top: -50px;
+}
+
+form {
+    font-size: 17px;
+    margin: 15px;
+}
+
+.part {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.kw {
+    padding: 0px;
+}
+
+#js-keyword {
+    margin-left: 10px;
+}
+
+label {
+    padding: 10px;
 }
   
 .container {
@@ -78,7 +102,7 @@ section {
     margin-left: 15px;
 }
 
-h2 {
+h2, h3, h4 {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -88,15 +112,6 @@ p {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 17px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input {
-    margin-bottom: 5px;
 }
 
 #chartdiv {
@@ -132,7 +147,7 @@ footer {
         border-color: yellow; 
         border-radius: 5px;
     }
-  }
+}
 
 @media only screen and (min-width: 1000px) {
     #navbar {
@@ -179,7 +194,6 @@ footer {
         border: solid;
         border-color: yellow; 
         border-radius: 5px;
-    }
-    
+    } 
 }
 

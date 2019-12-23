@@ -32,27 +32,34 @@
                 </ol>
             </section>
             <section>
-                <h3>What would you like to search for?</h3>
                 <a id="search"> </a>
                 <form id="js-form">
+                <h3>What would you like to search for?</h3>
                 <fieldset class="parameters">
                     <legend>Search</legend>
-                    <label for="js-keyword">Enter keyword: <span><input type="text" id="js-keyword" placeholder="sad" required></span></label>
-
-                    <p>Result Type:</p>
-                    <input id="js-type-one" type="radio"  name="type" value="syns" required>
-                    <label for="js-type-one">Synonyms</label>
-                    <input id="js-type-two" type="radio"  name="type" value="ants" required>
-                    <label for="js-type-two">Antonyms</label>
+                    <div class="part">
+                        <label class="kw" for="js-keyword">Enter keyword: </label>
+                        <input type="text" id="js-keyword" placeholder="sad" required>
+                    </div>
+    
+                    <p>Result type:</p>
+                    <div class="part">
+                        <input id="js-type-one" type="radio"  name="type" value="syns" required > 
+                        <label for="js-type-one"> Synonyms</label>
+                    </div>
+                    <div class="part">
+                        <input id="js-type-two" type="radio"  name="type" value="ants" required > 
+                        <label for="js-type-two"> Antonyms</label>
+                    </div>
                     <button type="submit" id="submit">Search</button>
                 </fieldset>
                 </form>
             </section> 
             <section id="js-results">
                 <a id="word-cloud"> </a>
-                <h4>Word Cloud</h4>
+                <h3>Word Cloud</h3>
                 <div id="chartdiv"></div>
-                <h5>Definition:</h5>
+                <h4>Definition:</h4>
             </section> 
         </main>
         <footer>
