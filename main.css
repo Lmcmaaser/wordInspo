@@ -25,6 +25,7 @@ button:hover {
     padding: 20px 10px;
     transition: 0.4s;
     background-color: palevioletred; 
+    color: black;
 }
 
 nav a {
@@ -34,7 +35,6 @@ nav a {
 
 .nav-links {
     text-align: center;
-    /*position: relative;*/
 }
 
 .headline {
