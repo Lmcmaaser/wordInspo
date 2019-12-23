@@ -31,12 +31,14 @@ button:hover {
 nav a {
     font-size: 16px;
     padding-right: 5px;
-}
-
-.nav-links {
     text-align: center;
     color: black;
 }
+
+/*.nav-links {
+    text-align: center;
+    color: black;
+}*/
 
 .headline {
     text-align: center;
