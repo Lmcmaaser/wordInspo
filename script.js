@@ -42,6 +42,7 @@ function getWords(keyWord, type) {
 
 //display definition
 function displayResults(responseJson, keyword, type) { 
+  console.log(responseJson);
   $('#js-results').empty();
   let i = 0; 
   let option = responseJson[i];
@@ -51,15 +52,21 @@ function displayResults(responseJson, keyword, type) {
     <div id="chartdiv"></div>
     <a id="definition"> </a>
     <h3>Definition: ${option.meta.id}</h3>
-    <ol>
-      <li>${option.shortdef[0]}</li>
-      <li>${option.shortdef[1]}</li>
-      <li>${option.shortdef[2]}</li>
+    <ol class="insert-definition">
     </ol>`
   );
+  displayShortdef(option)
   wordData(option, type);
   $('#js-keyword').val('');
   $('input[name="type"]').prop('checked', false);
+};
+
+function displayShortdef(option) {
+  for (let i = 0; i < option.shortdef.length; i++) {
+    $('.insert-definition').append(
+      `<li>${option.shortdef[i]}</li>`
+    )
+  }
 };
 
 //create word cloud
