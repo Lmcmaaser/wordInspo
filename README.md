@@ -1,4 +1,7 @@
-wordInspo
+WordInspo
+
+![First screenshot of WordInspo](screenshots/wordInspoScreenShot1.png)
+![Second screenshot of WordInspo](screenshots/wordInspoScreenShot2.png)
 
 Live Demo: https://lmcmaaser.github.io/wordInspo/
 
