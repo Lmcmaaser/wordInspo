@@ -36,7 +36,17 @@ function getWords(keyWord, type) {
     })
     .then(responseJson => displayResults(responseJson, keyWord, type))
     .catch(err => {
-      $('#js-results').text(`${err.message}`); //
+      console.log(err.message);
+      //$('#js-results').text(`${err.message}`);
+      if (err.message === "Cannot read property 'id' of undefined") {
+        $('#js-results').text(`${keyWord} not found, try a different word!`);
+      }
+      else if (err.message === "Cannot read property 'meta' of undefined"){
+        $('#js-results').text(`${keyWord} not found, WordInspo only accepts words found in Merriam-Webster's Collegiate® Thesaurus.`);
+      }
+      else {
+        $('#js-results').text(`WordInspo failed, check your internet connection and try again later.`);
+      }
       $('#js-keyword').val('');
       $('input[name="type"]').prop('checked', false);
   });
