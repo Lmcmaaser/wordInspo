@@ -36,8 +36,6 @@ function getWords(keyWord, type) {
     })
     .then(responseJson => displayResults(responseJson, keyWord, type))
     .catch(err => {
-      console.log(err.message);
-      //$('#js-results').text(`${err.message}`);
       if (err.message === "Cannot read property 'id' of undefined") {
         $('#js-results').text(`${keyWord} not found, try a different word!`);
       }
@@ -53,8 +51,7 @@ function getWords(keyWord, type) {
 };
 
 //display definition
-function displayResults(responseJson, keyword, type) { 
-  console.log(responseJson);
+function displayResults(responseJson, keyWord, type) { 
   $('#js-results').empty();
   let i = 0; 
   let option = responseJson[i];
