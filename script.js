@@ -36,7 +36,7 @@ function getWords(keyWord, type) {
     })
     .then(responseJson => displayResults(responseJson, keyWord, type))
     .catch(err => {
-      $('#js-results').text(`Something went wrong, try a different word or try again later!`); //${err.message}
+      $('#js-results').text(`${err.message}`); //
       $('#js-keyword').val('');
       $('input[name="type"]').prop('checked', false);
   });
